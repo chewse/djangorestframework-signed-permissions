@@ -3,7 +3,7 @@
 from django.core import signing
 from django.core.exceptions import FieldError
 
-from .signedfilters.signing import unsign_filters_and_actions
+from .signing import unsign_filters_and_actions
 
 
 class SignViewSetMixin(object):

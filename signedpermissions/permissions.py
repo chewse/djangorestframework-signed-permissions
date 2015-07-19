@@ -6,7 +6,7 @@ from rest_framework import permissions
 from .signing import unsign_filters_and_actions
 
 
-class SignedFilterPermission(permissions.BasePermission):
+class SignedPermission(permissions.BasePermission):
     """
     Allow access to a particular set of filters if the sign is valid.
 
