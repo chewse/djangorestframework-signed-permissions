@@ -3,8 +3,7 @@
 from django.core import signing
 from django.core.exceptions import FieldError
 
-from chewse.signedfilters.signing import unsign_filters_and_actions
-from chewse.utils.models import get_model_dotted_name
+from .signedfilters.signing import unsign_filters_and_actions
 
 
 class SignViewSetMixin(object):
@@ -20,7 +19,10 @@ class SignViewSetMixin(object):
             try:
                 filter_and_actions = unsign_filters_and_actions(
                     self.request.query_params['sign'],
-                    get_model_dotted_name(self.queryset.model)
+                    '{}.{}'.format(
+                        self.queryset.model.app_label,
+                        self.queryset.model.model_name,
+                    )
                 )
             except signing.BadSignature:
                 return super(SignViewSetMixin, self).get_queryset()

@@ -3,8 +3,7 @@
 from django.core import signing
 from rest_framework import permissions
 
-from chewse.signedfilters.signing import unsign_filters_and_actions
-from chewse.utils.models import get_model_dotted_name
+from .signing import unsign_filters_and_actions
 
 
 class SignedFilterPermission(permissions.BasePermission):
@@ -25,7 +24,11 @@ class SignedFilterPermission(permissions.BasePermission):
         filter_and_actions = self._get_filter_and_actions(
             request.query_params.get('sign'),
             view.action,
-            get_model_dotted_name(view.queryset.model))
+            '{}.{}'.format(
+                view.queryset.model.app_label,
+                view.queryset.model.model_name
+            )
+        )
         if not filter_and_actions:
             return False
         if request.method == 'POST':
@@ -42,7 +45,7 @@ class SignedFilterPermission(permissions.BasePermission):
         filter_and_actions = self._get_filter_and_actions(
             request.query_params.get('sign'),
             view.action,
-            get_model_dotted_name(obj.__class__))
+            '{}.{}'.format(obj.app_label, obj.model_name))
         if not filter_and_actions:
             return False
         qs = view.queryset.filter(**filter_and_actions['filters'])
