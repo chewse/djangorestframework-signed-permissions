@@ -16,6 +16,9 @@ setup(
     license='MIT License',  # example license
     description='Allow access to your REST resources via a signed url',
     long_description=README,
+    author='Chewse',
+    author_email='james@chewse.com',
+    url='https://github.com/chewse/djangorestframework-signed-permissions',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
