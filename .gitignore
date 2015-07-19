@@ -11,3 +11,4 @@ node_modules/
 *.swp
 *.swo
 docs/_build
+*.egg-info
