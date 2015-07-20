@@ -6,7 +6,7 @@ from django.core.exceptions import FieldError
 from .signing import unsign_filters_and_actions
 
 
-class SignViewSetMixin(object):
+class SignedViewSetMixin(object):
     """
     Mixin that is added to a ViewSet to properly filter its queryset.
 

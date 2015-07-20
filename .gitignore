@@ -12,3 +12,4 @@ node_modules/
 *.swo
 docs/_build
 *.egg-info
+dist
