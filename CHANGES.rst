@@ -1,3 +1,9 @@
+0.0.4
+=====
+
+* Fix for fetching the dotted name of a model
+
+
 0.0.3
 =====
 
