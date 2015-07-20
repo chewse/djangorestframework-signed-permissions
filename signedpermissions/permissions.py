@@ -25,8 +25,8 @@ class SignedPermission(permissions.BasePermission):
             request.query_params.get('sign'),
             view.action,
             '{}.{}'.format(
-                view.queryset.model.app_label,
-                view.queryset.model.model_name
+                view.queryset.model._meta.app_label,
+                view.queryset.model._meta.model_name
             )
         )
         if not filter_and_actions:
@@ -45,7 +45,7 @@ class SignedPermission(permissions.BasePermission):
         filter_and_actions = self._get_filter_and_actions(
             request.query_params.get('sign'),
             view.action,
-            '{}.{}'.format(obj.app_label, obj.model_name))
+            '{}.{}'.format(obj._meta.app_label, obj._meta.model_name))
         if not filter_and_actions:
             return False
         qs = view.queryset.filter(**filter_and_actions['filters'])

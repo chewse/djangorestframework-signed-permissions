@@ -20,8 +20,8 @@ class SignedViewSetMixin(object):
                 filter_and_actions = unsign_filters_and_actions(
                     self.request.query_params['sign'],
                     '{}.{}'.format(
-                        self.queryset.model.app_label,
-                        self.queryset.model.model_name,
+                        self.queryset.model._meta.app_label,
+                        self.queryset.model._meta.model_name,
                     )
                 )
             except signing.BadSignature:
