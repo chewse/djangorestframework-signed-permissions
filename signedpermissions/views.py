@@ -25,7 +25,7 @@ class SignedViewSetMixin(object):
                     )
                 )
             except signing.BadSignature:
-                return super(SignViewSetMixin, self).get_queryset()
+                return super(SignedViewSetMixin, self).get_queryset()
             else:
                 for filtered_action in filter_and_actions:
                     try:
@@ -33,4 +33,4 @@ class SignedViewSetMixin(object):
                     except FieldError:
                         continue
                     return qs
-        return super(SignViewSetMixin, self).get_queryset()
+        return super(SignedViewSetMixin, self).get_queryset()
