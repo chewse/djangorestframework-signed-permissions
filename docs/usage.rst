@@ -15,6 +15,27 @@ Install from PyPI with ``pip``:
 .. _pypi: https://pypi.python.org/pypi/djangorestframework-signed-permissions
 
 
+Permission Signing
+==================
+
+This package leverages django's signing framework to store permission
+information in a way that can be distributed in a url. Simply put, the function
+``sign_filter_permissions`` expects to be passed a dictionary of a certain
+format that it will attempt to sign as JSON and then returns that signed
+string. The format of that dictionary is as follows:
+
+.. code:: python
+
+    {
+      '<app_label>.<app_model>':[
+        {
+          'filters': {<dictionary that will be **kwargs expanded and passed to <app_model>.objects.filter},
+          'actions': [<list of viewset method names to grant access to>]
+        },
+      ],
+    }
+
+
 Example
 =======
 
