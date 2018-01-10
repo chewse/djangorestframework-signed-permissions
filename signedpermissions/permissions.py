@@ -36,7 +36,7 @@ class SignedPermission(permissions.BasePermission):
                 # Do unicode conversion because value will always be a
                 # string
                 if (key in filter_and_actions['filters'] and not
-                        unicode(filter_and_actions['filters'][key]) == value):
+                        unicode(filter_and_actions['filters'][key]) == unicode(value)):
                     return False
         return True
 
