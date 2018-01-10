@@ -1,3 +1,8 @@
+0.0.5
+=====
+
+* Fix for coerced unicode values that was changed in newer versions of DRF
+
 0.0.4
 =====
 
